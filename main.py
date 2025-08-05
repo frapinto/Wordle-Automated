@@ -13,6 +13,7 @@ import os
 WORDLE_PAGE = "https://www.nytimes.com/games/wordle/index.html"
 MY_EMAIL = os.environ["MY_EMAIL"]
 PASSWORD = os.environ["PASSWORD"]
+TARGET_EMAIL = os.environ["TARGET_EMAIL"]
 
 chrome_options = Options()
 chrome_options.add_argument("--incognito")
@@ -83,7 +84,7 @@ def send_email_result(game_won, final_word):
     msg = EmailMessage()
     msg['Subject'] = 'Wordle Result'
     msg['From'] = MY_EMAIL
-    msg['To'] = "pintofrancisco97@gmail.com"
+    msg['To'] = TARGET_EMAIL
 
     if game_won:
         msg.set_content(f"You won today's Wordle!\n\nCongratulations, the word today was {final_word}!")
